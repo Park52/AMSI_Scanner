@@ -55,7 +55,7 @@ void Scanner::finalize()
 }
 
 bool 
-Scanner::scan(
+Scanner::scan_file(
 	_In_ const wchar_t* file_path, 
 	_Out_ bool& is_malware, 
 	_Out_ uint32_t& malware_level)
@@ -108,9 +108,8 @@ Scanner::scan(
 }
 
 bool 
-Scanner::scan(
-	_In_ BYTE* data, 
-	_In_ ULONG size, 
+Scanner::scan_buffer(
+	_In_ const wchar_t* data,
 	_Out_ bool& is_malware, 
 	_Out_ uint32_t& malware_level)
 {
@@ -120,9 +119,14 @@ Scanner::scan(
 
 	do
 	{
-		result = AmsiScanBuffer(_amsi_context,
+		//result = AmsiScanBuffer(_amsi_context,
+		//						data,
+		//						size,
+		//						L"AMSI",
+		//						_session,
+		//						&scan_result);
+		result = AmsiScanString(_amsi_context,
 								data,
-								size,
 								L"AMSI",
 								_session,
 								&scan_result);

@@ -43,19 +43,9 @@ int wmain(int argc, wchar_t* argv[])
 	bool is_malware = false;
 	uint32_t malware_level = 0;
 
-	//if (true != scanner.scan((BYTE*)argv[1],
-	//						 (wcslen(argv[1])-1) * sizeof(wchar_t),
-	//						 is_malware,
-	//						 malware_level))
-	//{
-	//	std::cout << "scanner.scan failed" << std::endl;
-	//	check_policy();
-	//	return -1;
-	//}
-
-	if (true != scanner.scan(argv[1],
-							 is_malware,
-							 malware_level))
+	if (true != scanner.scan_buffer(argv[1],
+									is_malware,
+									malware_level))
 	{
 		std::cout << "scanner.scan failed" << std::endl;
 		check_policy();

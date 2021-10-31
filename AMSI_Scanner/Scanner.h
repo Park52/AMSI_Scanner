@@ -19,14 +19,13 @@ public:
 	void finalize();
 
 public:
-	bool scan(_In_ const wchar_t* file_path,
-			  _Out_ bool& is_malware,
-			  _Out_ uint32_t& malware_level);
+	bool scan_file(_In_ const wchar_t* file_path,
+				   _Out_ bool& is_malware,
+				   _Out_ uint32_t& malware_level);
 
-	bool scan(_In_ BYTE* data,
-			  _In_ ULONG size,
-			  _Out_ bool& is_malware,
-			  _Out_ uint32_t& malware_level);
+	bool scan_buffer(_In_ const wchar_t* data,
+					 _Out_ bool& is_malware,
+					 _Out_ uint32_t& malware_level);
 private:
 	bool get_file_data(_In_ const wchar_t* file_path,
 					   _Out_ file_data& data);
